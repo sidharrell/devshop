@@ -39,7 +39,7 @@ class RoboFile extends \Robo\Tasks {
   const DOCKER_COMPOSE_VERSION = '1.10.0';
 
   // Defines where devmaster is installed.  'aegir-home/devmaster-$DEVSHOP_LOCAL_VERSION'
-  const DEVSHOP_LOCAL_VERSION = '1.x';
+  const DEVSHOP_LOCAL_VERSION = '2.x';
 
   // Defines the URI we will use for the devmaster site.
   const DEVSHOP_LOCAL_URI = 'devshop.local.computer';
