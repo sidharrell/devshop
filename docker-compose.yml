@@ -17,9 +17,9 @@ services:
       MYSQL_ROOT_PASSWORD: strongpassword
       AEGIR_MAKEFILE: https://raw.githubusercontent.com/opendevshop/devshop/2.x/build-devmaster.make
       AEGIR_PROFILE: devmaster
-      AEGIR_VERSION: 1.x
-      PROVISION_VERSION: 7.x-3.x
-      AEGIR_HOSTMASTER_ROOT: /var/aegir/devmaster-1.x
+      AEGIR_VERSION: 2.x
+      PROVISION_VERSION: 4.x
+      AEGIR_HOSTMASTER_ROOT: /var/aegir/devmaster-2.x
       XDEBUG_CONFIG: "remote_host=172.17.0.1 idekey=PHPSTORM"
       PHP_IDE_CONFIG: "serverName=devshop.local.computer"
 
