@@ -1,9 +1,14 @@
 #!/bin/bash
-
 set -e
 
-# Run remaining tasks from install process.
+# Use path relative to this script to find bin dir.
+DEVSHOP_PATH="$( cd "$(dirname "$0")"/../bin ; pwd -P )"
+echo "Found DevShop CLI in $DEVSHOP_PATH"
 
+# Set PATH to devshop bin folder so drush, node, npm, and devshop commands are fixed.
+export PATH=${DEVSHOP_PATH}:${PATH}
+
+# Run remaining tasks from install process.
 echo ">> Verify hostmaster platform first."
 PLATFORM_ALIAS=`drush @hm php-eval "print d()->platform->name"`
 drush @hostmaster hosting-task $PLATFORM_ALIAS verify --fork=0 --strict=0 --force
@@ -20,8 +25,16 @@ drush @hostmaster vset hosting_queued_paused 1
 # Enable watchdog
 drush @hostmaster en dblog -y
 
+# Save GitHub Token
+if [ -n "${GITHUB_TOKEN}" ]; then
+  drush @hostmaster vset devshop_github_token ${GITHUB_TOKEN}
+  echo ">> Drupal variable set from GITHUB_TOKEN environment variable."
+else
+  echo ">> GITHUB_TOKEN environment variable not found."
+fi
+
 # Run the test suite.
-/usr/share/devshop/bin/devshop devmaster:test
+devshop devmaster:test
 #drush @hostmaster provision-test --behat-folder-path=profiles/devmaster/tests --test-type=behat
 
 # Unpause the task queue.

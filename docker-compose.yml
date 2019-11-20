@@ -5,7 +5,7 @@ version: '2'
 services:
 
   devmaster:
-    image: aegir/hostmaster:php7-xdebug
+    image: aegir/hostmaster:php72-xdebug
     ports:
       - 80:80
     hostname: devshop.local.computer
@@ -15,17 +15,18 @@ services:
       - database
     environment:
       MYSQL_ROOT_PASSWORD: strongpassword
-      AEGIR_MAKEFILE: https://raw.githubusercontent.com/opendevshop/devshop/2.x/build-devmaster.make
+      AEGIR_MAKEFILE: /usr/share/devshop/build-devmaster-dev.make.yml
       AEGIR_PROFILE: devmaster
       AEGIR_VERSION: 2.x
       PROVISION_VERSION: 4.x
       AEGIR_HOSTMASTER_ROOT: /var/aegir/devmaster-2.x
       XDEBUG_CONFIG: "remote_host=172.17.0.1 idekey=PHPSTORM"
       PHP_IDE_CONFIG: "serverName=devshop.local.computer"
+      GITHUB_TOKEN: "${GITHUB_TOKEN}"
 
       # To allow the devmaster container to launch other docker containers, we need the host's path to aegir home directory.
       HOST_AEGIR_HOME: /home/jon/Projects/devshop/aegir-home
-
+      PATH: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/share/devshop/bin"
       # @TODO: We can't define the service type here.
       # The Provision classes for this service type MUST be available in
       # provision project, because at this point, the devmaster site might not
@@ -42,7 +43,8 @@ services:
       - ./provision:/usr/share/drush/commands/provision:delegated
       - /var/run/docker.sock:/var/run/docker.sock
       - $HOME/.ssh:/var/aegir/.ssh
-
+    extra_hosts:
+      - "remote.devshop.local.computer:10.10.10.11"
   database:
     image: mariadb
     logging:

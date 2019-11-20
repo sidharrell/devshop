@@ -1,4 +1,3 @@
-
 # DevShop Development Makefile
 core: "7.x"
 api: "2"
@@ -10,16 +9,15 @@ defaults:
 projects:
   drupal:
     type: core
-    version: 7.65
+    version: 7.67
 
   # DEVELOPERS: If submitting a Pull Request, CHANGE THE URL or BRANCH here, if you need to test devshop and devmaster repos.
   devmaster:
     type: profile
     subdir: ''
     download:
-      type: git
-      branch: 7.x-2.x
-      url: https://github.com/opendevshop/devmaster.git
+      type: copy
+      url: devmaster
 
   devel:
     version: 1
