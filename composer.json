@@ -8,7 +8,7 @@
         "symfony/filesystem": "^4.3",
         "cpliakas/git-wrapper": "1.*",
         "asm/php-ansible": "^2.0",
-        "consolidation/robo": "^1",
+        "consolidation/robo": "^2",
         "mouf/nodejs-installer": "^1.0",
         "php": "^7.1"
     },
@@ -43,10 +43,14 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
+        "split": [
+            "DevShop\\Composer::splitRepos"
+        ],
         "post-install-cmd": [
-            "php -r \"copy('https://github.com/drush-ops/drush/releases/download/8.3.0/drush.phar', 'bin/drush');\"",
-            "php -r \"chmod('bin/drush', 0755);\"",
-            "drush --version"
+            "DevShop\\Composer::installBins"
+        ],
+        "post-update-cmd": [
+            "DevShop\\Composer::installBins"
         ]
     }
 }
