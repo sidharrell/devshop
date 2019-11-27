@@ -67,9 +67,9 @@ class Composer {
       $target = "refs/splits/$folder";
 
       // Handle special case for devmaster
-      if ($folder == 'devmaster' && $current_branch == '1.x') {
-        $branch = '7.x-1.x';
-        echo "\n\n- Pushing devmaster to 7.x-1.x ... \n";
+      if ($folder == 'devmaster' && $current_branch == '1.x' || $current_branch == '2.x') {
+        $branch = "7.x-$current_branch";
+        echo "\n\n- Pushing devmaster to $branch ... \n";
       }
       else {
         $branch = $current_branch;
