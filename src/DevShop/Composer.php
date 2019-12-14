@@ -12,7 +12,6 @@ namespace DevShop;
 class Composer {
 
   const BIN_FILES = array(
-    'drush' => 'https://github.com/drush-ops/drush/releases/download/8.3.0/drush.phar',
     'splitsh-lite' => 'https://github.com/splitsh/lite/releases/download/v1.0.1/lite_linux_amd64.tar.gz',
   );
 
