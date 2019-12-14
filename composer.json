@@ -103,5 +103,5 @@
         "preserve-paths": [
             "web/sites"
         ]
-    },
+    }
 }
