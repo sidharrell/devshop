@@ -1,4 +1,4 @@
-name: Git Split
+name: Git Management
 on: [push]
 jobs:
   monorepo-split:
@@ -19,6 +19,9 @@ jobs:
         with:
           path: $RUNNER_WORKSPACE/devshop/.git/splitsh.db
           key: 'splitsh-cache'
+
+      - name: Show Git Information
+        run: env | grep GITHUB
 
       - name: Create a branch for the splitsh
         run: git checkout -b $( echo ${GITHUB_REF} | sed 's/refs\/heads\///')
