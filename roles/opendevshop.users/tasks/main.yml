@@ -39,6 +39,7 @@
   yum:
     name: "{{ devshop_prerequisite_packages }}"
     state: present
+    enablerepo: "{{ devshop_prerequisite_enablerepo }}"
 
 - name: Populate service facts
   service_facts:
@@ -50,7 +51,7 @@
     gid: "{{ aegir_user_gid }}"
 
 - name: Create Aegir user
-  when: aegir_create_user == true
+  when: aegir_create_user
   ignore_errors: true
   user:
     name: "{{ aegir_user_name }}"
@@ -68,10 +69,8 @@
     group: "{{ aegir_user_name }}"
     owner: "{{ aegir_user_name }}"
 
-# @TODO: Determine WHY centos needs this.
-# Aegir"s CentOS installation requires this.
-- name: Set appropriate permissions for Aegir"s home folder.
-  command: chmod -R 755 {{ aegir_user_home }}
+- name: Ensure /var/aegir has correct permissions.
+  command: chmod 755 {{ aegir_user_home }}
   when: ansible_os_family == "RedHat"
 
 - name: Create aegir's config folder
@@ -99,8 +98,11 @@
     mode: 0644
 
 - name: Pre-authorize known hosts.
-  shell: "ssh-keyscan {{ item }} >> {{ aegir_user_home }}/.ssh/known_hosts && chown {{ aegir_user_name }}:{{ aegir_user_name }} {{ aegir_user_home }}/.ssh/known_hosts"
+  shell: |
+    ssh-keyscan {{ item }} >> {{ aegir_user_home }}/.ssh/known_hosts && chown {{ aegir_user_name }}:{{ aegir_user_name }} {{ aegir_user_home }}/.ssh/known_hosts
   with_items: "{{ ssh_known_hosts }}"
+  args:
+    creates: "{{ aegir_user_home }}/.ssh/known_hosts"
 
 # We can't copy from the devmaster distro that gets created on the server because it isn't there yet.
 - name: Install fix-drupal-*-ownership scripts.

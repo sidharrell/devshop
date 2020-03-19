@@ -2,11 +2,18 @@
     "name": "devshop/devmaster",
     "description": "Web Dashboard for DevShop",
     "type": "project",
-    "license": "GPL-2.0-or-later",
+    "keywords": ["framework", "devops", "platform", "hosting"],
+    "homepage": "https://getdevshop.com",
+    "license": "MIT",
     "authors": [
         {
             "name": "Jon Pugh",
+            "email": "jon@thinkdrop.net",
             "role": "Author"
+        },
+        {
+            "name": "DevShop Community",
+            "homepage": "https://github.com/opendevshop/devshop/graphs/contributors"
         }
     ],
     "repositories": [
@@ -16,6 +23,8 @@
         }
     ],
     "require": {
+        "knplabs/github-api": "^1.4",
+        "cpliakas/git-wrapper": "2.*",
         "php": "^7.1",
         "ext-curl": "*",
         "ext-gd": "*",
@@ -81,7 +90,8 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "bin": [
-        "devshop"
+        "scripts/devshop",
+        "scripts/branch-or-tag"
     ],
     "config": {
         "bin-dir": "bin",
@@ -120,6 +130,9 @@
         ],
         "post-create-project-cmd": [
             "DrupalProject\\composer\\ScriptHandler::removeInternalFiles"
+        ],
+        "update-roles": [
+            "DevShop\\Composer::updateRoles"
         ]
     },
     "extra": {
