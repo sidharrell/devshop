@@ -103,7 +103,7 @@
 
 # If --build-arg OS_VERSION is not set, use 'ubuntu1804'
 # NOTE: OS_VERSION is ignored if FROM_IMAGE is set as a build arg.
-ARG OS_VERSION_ARG="ubuntu1804"
+ARG OS_VERSION_ARG="centos7"
 
 # If --build-arg FROM_IMAGE is not set, use '"geerlingguy/docker-${OS_VERSION}-ansible:latest'
 ARG FROM_IMAGE_ARG="geerlingguy/docker-${OS_VERSION_ARG}-ansible:latest"
