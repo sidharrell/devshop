@@ -1,3 +1,3 @@
 ---
-# Pass in a comma-separated list of repos to use (e.g. "remi,epel").
+# Pass in a comma-separated list of repos to use (e.g. "epel").
 php_enablerepo: ""

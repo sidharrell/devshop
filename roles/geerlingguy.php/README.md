@@ -32,7 +32,7 @@ The default values for the HTTP server deamon are `httpd` (used by Apache) for R
 
     php_enablerepo: ""
 
-(RedHat/CentOS only) If you have enabled any additional repositories (might I suggest [geerlingguy.repo-epel](https://github.com/geerlingguy/ansible-role-repo-epel) or [geerlingguy.repo-remi](https://github.com/geerlingguy/ansible-role-repo-remi)), those repositories can be listed under this variable (e.g. `remi-php70,epel`). This can be handy, as an example, if you want to install the latest version of PHP 7.0, which is in the Remi repository.
+(RedHat/CentOS only) If you have enabled any additional repositories (might I suggest [geerlingguy.repo-epel](https://github.com/geerlingguy/ansible-role-repo-epel))), those repositories can be listed under this variable (e.g. `epel`).
 
     php_default_version_debian: "7.0"
 
@@ -42,7 +42,7 @@ The default values for the HTTP server deamon are `httpd` (used by Apache) for R
 
     php_packages_state: "present"
 
-If you have enabled any additional repositories such as [geerlingguy.repo-epel](https://github.com/geerlingguy/ansible-role-repo-epel) or [geerlingguy.repo-remi](https://github.com/geerlingguy/ansible-role-repo-remi), you may want an easy way to swap PHP versions on the fly. By default, this is set to `"present"`. You can override this variable to `"latest"` to upgrade to the latest available version. Combined with `php_enablerepo`, a user now doesn't need to manually uninstall the existing PHP packages before installing them from a different repository.
+If you have enabled any additional repositories such as [geerlingguy.repo-epel](https://github.com/geerlingguy/ansible-role-repo-epel), you may want an easy way to swap PHP versions on the fly. By default, this is set to `"present"`. You can override this variable to `"latest"` to upgrade to the latest available version. Combined with `php_enablerepo`, a user now doesn't need to manually uninstall the existing PHP packages before installing them from a different repository.
 
     php_install_recommends: true
 

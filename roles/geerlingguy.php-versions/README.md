@@ -23,7 +23,6 @@ The PHP version to be installed. Any [currently-supported PHP major version](htt
 ## Dependencies
 
   - geerlingguy.php is a soft dependency as the `php_version` variable is required to be set.
-  - geerlingguy.repo-remi, if you're using CentOS or a Red Hat derivative.
 
 ## Example Playbook
 
@@ -33,8 +32,6 @@ The PHP version to be installed. Any [currently-supported PHP major version](htt
         php_version: '7.3'
     
       roles:
-        - role: geerlingguy.repo-remi
-          when: ansible_os_family == 'RedHat'
         - geerlingguy.php-versions
         - geerlingguy.php
 

@@ -1,20 +1,20 @@
 ---
 __php_packages:
-  - php
-  - php-cli
-  - php-common
-  - php-devel
-  - php-fpm
-  - php-gd
-  - php-imap
-  - php-ldap
-  - php-mbstring
-  - php-opcache
-  - php-pdo
-  - php-pear
-  - php-pecl-apcu
-  - php-xml
-  - php-xmlrpc
+  - mod_php73
+  - php73-cli
+  - php73-common
+  - php73-devel
+  - php73-fpm
+  - php73-gd
+  - php73-imap
+  - php73-ldap
+  - php73-mbstring
+  - php73-opcache
+  - php73-pdo
+  - pear1u
+  - php73-pecl-apcu
+  - php73-xml
+  - php73-xmlrpc
 __php_webserver_daemon: "httpd"
 
 __php_conf_paths:

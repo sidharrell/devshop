@@ -12,8 +12,6 @@
       when: ansible_os_family == 'Debian'
 
   roles:
-    - role: geerlingguy.repo-remi
-      when: ansible_os_family == 'RedHat'
     - role: geerlingguy.php-versions
     - role: geerlingguy.php
 

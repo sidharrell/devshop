@@ -4,7 +4,6 @@
   become: true
 
   vars:
-    php_enablerepo: "remi,remi-php70"
     php_enable_webserver: false
 
     # Test a global requirement.
@@ -45,8 +44,6 @@
       when: ansible_distribution == 'Fedora'
 
   roles:
-    - role: geerlingguy.repo-remi
-      when: ansible_os_family == 'RedHat' and ansible_distribution != 'Fedora'
     - role: geerlingguy.repo-dotdeb
       when: ansible_distribution == 'Debian'
     - role: geerlingguy.git

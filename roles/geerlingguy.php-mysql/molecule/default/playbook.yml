@@ -4,7 +4,7 @@
   become: true
 
   vars:
-    php_enablerepo: "remi,remi-php70"
+    php_enablerepo: ""
 
   pre_tasks:
     - name: Update apt cache.
@@ -12,8 +12,6 @@
       when: ansible_os_family == 'Debian'
 
   roles:
-    - role: geerlingguy.repo-remi
-      when: ansible_os_family == 'RedHat'
     - role: geerlingguy.apache
     - role: geerlingguy.mysql
     - role: geerlingguy.php
