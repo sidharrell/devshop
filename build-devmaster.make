@@ -31,7 +31,7 @@ projects[devmaster][download][type] = "git"
 ; This ensures that people that install the latest 1.x devshop get the absolute latest from github.
 projects[devmaster][type] = profile
 projects[devmaster][download][type] = git
-projects[devmaster][download][branch] = 7.x-1.x
+projects[devmaster][download][branch] = 1.x
 projects[devmaster][download][url] = "https://github.com/sidharrell/devshop.git"
 ###DEVELOPMENTEND###
 
